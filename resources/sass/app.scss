@@ -12,3 +12,18 @@
         vertical-align: middle;
     }
 }
+
+.navbar .dropdown-menu {
+        &:before {
+            top: -16px;
+            right: 9px;
+            left: auto;
+            border: 8px solid transparent;
+            border-bottom: 8px solid $white;
+        }
+        &:after, &:before {
+            position: absolute;
+            display: inline-block;
+            content: "";
+        }
+}

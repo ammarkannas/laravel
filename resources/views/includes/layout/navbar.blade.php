@@ -1,4 +1,4 @@
-<header class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<header class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
     <div class="container-fluid">
         <x-a class="navbar-brand" route="home" :text="config('app.name')" />
 
@@ -22,7 +22,7 @@
                     </li>
                 @else
                     <li class="nav-item dropdown">
-                        <x-a class="nav-link dropdown-toggle badge badge-light p-2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <x-a class="nav-link dropdown-toggle badge badge-dark p-2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->username }}
                         </x-a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

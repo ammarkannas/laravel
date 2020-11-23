@@ -10907,3 +10907,18 @@ a.text-dark:focus {
   vertical-align: middle;
 }
 
+.navbar .dropdown-menu:before {
+  top: -16px;
+  right: 9px;
+  left: auto;
+  border: 8px solid transparent;
+  border-bottom: 8px solid #fff;
+}
+
+.navbar .dropdown-menu:after,
+.navbar .dropdown-menu:before {
+  position: absolute;
+  display: inline-block;
+  content: "";
+}
+
