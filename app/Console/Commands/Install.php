@@ -13,7 +13,7 @@ class Install extends Command
      *
      * @var string
      */
-    protected $signature = 'install {--email=admin@admin.com} {--password=password} {--username=Administrator}';
+    protected $signature = 'install {--email=admin@admin.com} {--password=password} {--username=Administrator} {--force} {--fresh}';
 
     /**
      * The console command description.
@@ -39,15 +39,21 @@ class Install extends Command
      */
     public function handle()
     {
-        $this->call('migrate');
+        if ($this->option('force') || $this->option('fresh')) {
+            $this->call('migrate:fresh');
+        } else {
+            $this->call('migrate');
+        }
 
-        $user = new User([
-            'email' => $this->option('email'),
-            'password' => Hash::make($this->option('password')),
-            'username' => $this->option('username')
-        ]);
+        if (! User::where('email', '=', $this->option('email'))->count()) {
+            $user = new User([
+                'email' => $this->option('email'),
+                'password' => Hash::make($this->option('password')),
+                'username' => $this->option('username')
+            ]);
 
-        $user->save();
+            $user->save();
+        }
 
         return 0;
     }
